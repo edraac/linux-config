@@ -1,0 +1,20 @@
+#!/bin/sh
+
+scriptname=$0
+scriptname=${scriptname##*/}
+
+# Fix 1: make energy_uj readable by others so MangoHud can poll CPU power
+
+if [ ! -e /sys/class/powercap/intel-rapl:0/energy_uj ]; then
+    echo "$scriptname - ERROR: energy_uj doesn't exist!"
+    exit 1
+else
+    echo "$scriptname - Changing power read permissions..."
+    chmod 0444 /sys/class/powercap/intel-rapl:0/energy_uj
+    echo "$scriptname - Done!"
+    echo
+fi
+
+echo "All done!"
+
+exit 0

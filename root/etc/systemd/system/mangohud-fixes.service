@@ -1,0 +1,15 @@
+[Unit]
+Description=Perform various system fixes for mangohud
+After=local-fs.target
+Wants=local-fs.target
+After=systemd-udevd.service
+Wants=systemd-udevd.service
+ConditionPathExists=/sys/class/powercap/intel-rapl:0/energy_uj
+
+[Service]
+Type=oneshot
+ExecStart=mangohud-fixes
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

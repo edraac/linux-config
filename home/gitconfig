@@ -1,0 +1,15 @@
+[user]
+    name = Eduardo Ramirez
+    email = eduardo.ramirez@tuta.com
+[alias]
+    br = branch
+    ci = commit -s
+    ca = commit -s --amend
+    co = checkout
+    cp = cherry-pick
+    pu = push
+    pl = pull
+    ft = fetch
+    st = status
+[init]
+    defaultBranch = main
