@@ -122,6 +122,9 @@ done
 # Configure prompt for Ubuntu
 if [[ $is_ubuntu -eq 1 ]]; then
     link_file "$CURDIR/configure-prompt-ubuntu.sh" ".bashrc.d/configure-prompt-ubuntu.sh"
+    if [[ $(grep configure-prompt-ubuntu ~/.bashrc) == "" ]]; then
+        echo ". ~/.bashrc.d/configure-prompt-ubuntu.sh" >> ~/.bashrc
+    fi
 fi
 
 # General Flatpak settings
