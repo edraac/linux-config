@@ -60,10 +60,12 @@ echo "Working from $CURDIR"
 echo
 # file=destination (relative to $HOME)
 declare -A files=(
+    ["$CURDIR/aliases.sh"]=".bashrc.d/aliases.sh"
+    ["$CURDIR/configure-prompt.sh"]=".bashrc.d/configure-prompt.sh"
     ["$CURDIR/tmux.conf"]=".tmux.conf"
     ["$CURDIR/gitconfig"]=".gitconfig"
     ["$CURDIR/MangoHud.conf"]="Games/MangoHud.conf"
-    ["$CURDIR/configure-prompt.sh"]=".bashrc.d/configure-prompt.sh"
+    ["$CURDIR/yakuakerc"]=".config/yakuakerc"
 )
 REAL_HOME=$(realpath $HOME)
 
