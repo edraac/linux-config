@@ -66,6 +66,8 @@ declare -A files=(
     ["$CURDIR/gitconfig"]=".gitconfig"
     ["$CURDIR/MangoHud.conf"]="Games/MangoHud.conf"
     ["$CURDIR/yakuakerc"]=".config/yakuakerc"
+    ["$CURDIR/Personal.profile"]=".local/share/konsole/Personal.profile"
+    ["$CURDIR/BreezeTranslucent.colorscheme"]=".local/share/konsole/BreezeTranslucent.colorscheme"
 )
 REAL_HOME=$(realpath $HOME)
 
