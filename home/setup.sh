@@ -150,9 +150,11 @@ if [[ $configure_mangohud == "yes" ]]; then
     if [[ -L $mangohud_conf ]]; then
         echo "Enabling MangoHud config..."
         flatpak override --user --filesystem=$mangohud_conf com.valvesoftware.Steam
+        flatpak override --user --filesystem=$CURDIR/MangoHud.conf com.valvesoftware.Steam
         flatpak override --user --env=MANGOHUD_CONFIGFILE=$mangohud_conf com.valvesoftware.Steam
         flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
         flatpak override --user --filesystem=$mangohud_conf com.heroicgameslauncher.hgl
+        flatpak override --user --filesystem=$CURDIR/MangoHud.conf com.heroicgameslauncher.hgl
         echo "Done!"
         echo
     fi
