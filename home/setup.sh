@@ -134,7 +134,6 @@ fi
 # General Flatpak settings
 if [[ $configure_flatpak == "yes" ]]; then
     echo "Configuring flatpak..."
-    flatpak override --user --env=STEAM_FORCE_DESKTOPUI_SCALING=2 com.valvesoftware.Steam
     flatpak override --user --filesystem=$REAL_HOME/Games com.valvesoftware.Steam
     flatpak override --user --filesystem=$REAL_HOME/Games com.heroicgameslauncher.hgl
     echo "Done!"
