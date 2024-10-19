@@ -6,7 +6,7 @@ SkinInstalledWithKns=true
 Translucency=true
 
 [Desktop Entry]
-DefaultProfile=
+DefaultProfile=Personal.profile
 
 [Dialogs]
 FirstRun=false
