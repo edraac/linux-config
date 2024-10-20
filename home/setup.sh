@@ -65,6 +65,7 @@ declare -A files=(
     ["$CURDIR/tmux.conf"]=".tmux.conf"
     ["$CURDIR/gitconfig"]=".gitconfig"
     ["$CURDIR/MangoHud.conf"]="Games/MangoHud.conf"
+    ["$CURDIR/MangoHud.conf"]=".config/MangoHud/MangoHud.conf"
     ["$CURDIR/yakuakerc"]=".config/yakuakerc"
     ["$CURDIR/Personal.profile"]=".local/share/konsole/Personal.profile"
     ["$CURDIR/BreezeTranslucent.colorscheme"]=".local/share/konsole/BreezeTranslucent.colorscheme"
@@ -111,6 +112,12 @@ if [[ ! -d .bashrc.d ]]; then
     echo "Done!"
     echo
 fi
+if [[ ! -d ~/.config/MangoHud ]]; then
+    echo "Creating .config/MangoHud directory..."
+    mkdir -p ~/.config/MangoHud
+    echo "Done!"
+    echo
+fi
 
 # Link configuration files
 for file in ${!files[@]}; do
@@ -148,12 +155,15 @@ if [[ $configure_mangohud == "yes" ]]; then
     mangohud_conf=$REAL_HOME/Games/MangoHud.conf
     if [[ -L $mangohud_conf ]]; then
         echo "Enabling MangoHud config..."
-        flatpak override --user --filesystem=$mangohud_conf com.valvesoftware.Steam
-        flatpak override --user --filesystem=$CURDIR/MangoHud.conf com.valvesoftware.Steam
+        flatpak override --user --filesystem=$mangohud_conf:ro com.valvesoftware.Steam
+        flatpak override --user --filesystem=$CURDIR/MangoHud.conf:ro com.valvesoftware.Steam
+        flatpak override --user --filesystem=xdg-config/MangoHud:ro com.valvesoftware.Steam
         flatpak override --user --env=MANGOHUD_CONFIGFILE=$mangohud_conf com.valvesoftware.Steam
         flatpak override --user --env=MANGOHUD=1 com.valvesoftware.Steam
-        flatpak override --user --filesystem=$mangohud_conf com.heroicgameslauncher.hgl
-        flatpak override --user --filesystem=$CURDIR/MangoHud.conf com.heroicgameslauncher.hgl
+
+        flatpak override --user --filesystem=$mangohud_conf:ro com.heroicgameslauncher.hgl
+        flatpak override --user --filesystem=$CURDIR/MangoHud.conf:ro com.heroicgameslauncher.hgl
+        flatpak override --user --filesystem=xdg-config/MangoHud:ro com.heroicgameslauncher.hgl
         echo "Done!"
         echo
     fi
